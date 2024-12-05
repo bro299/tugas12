@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
+    line-height: 1.6;
+}
+
+img { 
+    width: 100%;
+    display: flex;
+}
+
+a {
+    text-decoration: none;
+    color: #4caf50;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #81c784;
+}
+
+/* Search input and button styles */
+nav div:last-child {
+    display: flex;
+    align-items: center;
+    background-color: rgba(44, 52, 44, 0.133);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+nav input[type="search"] {
+    background-color: transparent;
+    color: #e0e0e0;
+    padding: 0.5rem 1rem;
+    width: 200px;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+}
+
+nav input[type="search"]::placeholder {
+    color: #b0b0b0;
+}
+
+nav .button {
+    background-color: #4caf50;
+    color: #ffffff;
+    padding: 0.5rem 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .button:hover {
+    background-color: #81c784;
+}
+
+nav .button i {
+    font-size: 1rem;
+}
+
+nav {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    position: sticky;
+    
+
+}
+
+.nav-logo {
+    max-width: 100px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.nav-links a {
+    position: relative;
+    padding-bottom: 0.75rem;
+    color: #e0e0e0;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #9c27b0;
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #9c27b0;
+}
+
+.nav-links a:hover::after {
+    width: 70%;
+}
+
+.btn {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #4caf50;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #81c784;
+}
+
+#cursor-effect {
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .spark {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #4caf50;
+            border-radius: 50%;
+            opacity: 0.7;
+            transform: scale(0);
+            animation: spark-animation 0.5s ease-out;
+        }
+
+        @keyframes spark-animation {
+            0% {
+                transform: scale(0);
+                opacity: 0.7;
+            }
+            70% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 5rem 2rem;
+}
+
+.blur {
+    position: absolute;
+    box-shadow: 0 0 1000px 50px rgba(76, 175, 80, 0.3);
+    z-index: -100;
+}
+
+.purple-blur {
+    position: absolute;
+    box-shadow: 0 0 1000px 50px rgba(209, 2, 246, 0.83);
+    z-index: -100;
+}
+
+header {
+    position: relative;
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+}
+
+header .content h4 {
+    margin-bottom: 1rem;
+    color: #4caf50;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+header .content h1 {
+    color: #e0e0e0;
+    margin-bottom: 1rem;
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 4rem;
+}
+
+header .content p {
+    margin-bottom: 2rem;
+    color: #b0b0b0;
+}
+
+header .image img {
+    max-width: 600px;
+    margin: auto;
+}
+
+section .header {
+    margin-bottom: 1rem;
+    color: #4caf50;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+.features {
+    margin-top: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.features .card {
+    background-color: #1e1e1e;
+    padding: 1rem;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.features .card:hover {
+    background-color: #2a2a2a;
+    border-color: #9c27b0;
+}
+
+.features .card span {
+    display: inline-block;
+    background-color: #4caf50;
+    padding: 2px 9px;
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.features .card h4 {
+    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.features .card p {
+    color: #b0b0b0;
+    margin-bottom: 1rem;
+}
+
+footer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+    background-color: #121212;
+    padding: 4rem 2rem;
+}
+
+footer .column {
+    display: flex;
+    flex-direction: column;
+}
+
+footer .column h4 {
+    margin-bottom: 1rem;
+    color: #4caf50;
+    font-weight: 600;
+}
+
+footer .column a {
+    color: #b0b0b0;
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+footer .column a:hover {
+    color: #9c27b0;
+}
+
+.footer-logo-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-logo-section .logo {
+    max-width: 100px;
+    margin-bottom: 1rem;
+    filter: brightness(0) invert(1);
+}
+
+.footer-logo-section .socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.footer-logo-section .socials a {
+
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.footer-logo-section .socials a:hover {
+    color: #9c27b0;
+}
+
+.copyright {
+    text-align: center;
+    margin: auto;
+    padding: 1rem;
+    background-color: #0a0a0a;
+    color: #ccc;
+}
+
+/* Scroll animation styles */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header, footer {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        display: none; /* Will be replaced with mobile menu in full implementation */
+    }
+
+    header .content h1 {
+        font-size: 3rem;
+        line-height: 3rem;
+    }
+}
+    </style>
+    <title>Skizofrenia</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <a href="#home">
+                <img src="images/logo.png" alt="logo">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="links"><a href="#home">Home</a></li>
+            <li class="links"><a href="#types">Type</a></li>
+            <li class="links"><a href="#characteristics">Characteristics</a></li>
+            <li class="links"><a href="#about">About</a></li>
+        </ul>
+
+        <div>
+            <input type="search" placeholder="Search...">
+            <button class="button"><i class="fa fa-search"></i></button>
+        </div>
+    </nav>
+
+    <header id="home" class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>Selamat Datang di Website Kami</h4>
+            <h1>Skizofrenia</h1>
+            <p>Skizofrenia adalah gangguan kesehatan mental serius yang mempengaruhi cara seseorang berpikir, merasakan, dan berperilaku. Kondisi ini dapat menyebabkan interpretasi realitas yang berbeda, termasuk halusinasi, delusi, dan gangguan cara berpikir.</p>
+            <button class="btn">Pelajari Lebih Lanjut</button>
+        </div>
+        <div class="image">
+            <img src="images/header.png" alt="Skizofrenia Ilustrasi">
+        </div>
+    </header>
+
+    <section id="types" class="container">
+        <h2 class="header">Jenis Skizofrenia</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="fas fa-brain"></i></span>
+                <h4>Skizofrenia Paranoid</h4>
+                <p>Skizofrenia jenis ini merupakan yang paling sering muncul gejalanya, termasuk di antaranya adalah delusi dan halusinasi. Pengidap skizofrenia paranoid biasanya menunjukkan perilaku yang tidak normal seakan ia sedang diawasi, sehingga ia kerap menunjukkan rasa marah, gelisah, bahkan benci terhadap seseorang.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-comment-slash"></i></span>
+                <h4>Skizofrenia Katonik</h4>
+                <p>Skizofrenia katonik ditandai dengan adanya gangguan pergerakan. Pengidap skizofrenia jenis ini cenderung tidak bergerak atau justru bergerak hiperaktif. Pada beberapa kasus juga ditemukan sama sekali tidak mau berbicara, atau senang mengulangi perkataan orang lain.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-random"></i></span>
+                <h4>Skizofrenia Tidak Teratur</h4>
+                <p>Skizofrenia tidak teratur merupakan jenis yang memiliki kemungkinan paling kecil untuk disembuhkan. Pengidap skizofrenia jenis ini ditandai dengan ucapan dan tingkah laku yang tidak teratur dan sulit dipahami.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-lightbulb"></i></span>
+                <h4>Skizofrenia Diferentiatif</h4>
+                <p>Skizofrenia jenis ini merupakan yang paling sering terjadi. Gejala yang ditimbulkan adalah kombinasi dari beragam subtipe dari skizofrenia lainnya.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-question-circle"></i></span>
+                <h4>Skizofrenia Residual</h4>
+                <p>Pengidap skizofrenia residual biasanya tidak menunjukkan gejala umum dari skizofrenia seperti berkhayal, halusinasi, tidak teratur dalam berbicara dan berperilaku.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="characteristics" class="container">
+        <h2 class="header">Penanganan Skizofrenia</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="fas fa-pills"></i></span>
+                <h4>Obat-Obatan</h4>
+                <p>Untuk mengatasi halusinasi dan delusi yang dialami, dokter biasanya akan meresepkan obat antipsikotik dalam dosis yang rendah. Obat ini bekerja dengan menghambat efek dopamin dan serotonin dalam otak.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-head-side-virus"></i></span>
+                <h4>Terapi Elektrokonvulsif</h4>
+                <p>Terapi elektrokonvulsif merupakan metode yang paling efektif untuk meredakan keinginan bunuh diri, mengatasi gejala depresi berat, dan menangani psikosis.</p>
+            </div>
+
+            <div class="card">
+                <span><i class="fas fa-user-doctor"></i></span>
+                <h4>Psikoterapi</h4>
+                <p>Psikoterapi bertujuan agar pengidap dapat mengendalikan gejala yang dialaminya. Terapi ini dikombinasikan dengan pemberian obat-obatan, termasuk terapi perilaku kognitif dan terapi remediasi kognitif.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="about" class="container">
+        <div class="column footer-logo-section">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            <p>Memberikan informasi dan pemahaman mendalam tentang skizofrenia untuk meningkatkan kesadaran dan dukungan.</p>
+            <div class="socials">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+
+        <div class="column">
+            <h4>Informasi</h4>
+            <a href="#">Tentang Skizofrenia</a>
+            <a href="#">Gejala</a>
+            <a href="#">Diagnosis</a>
+        </div>
+        <div class="column">
+            <h4>Dukungan</h4>
+            <a href="#">Konsultasi</a>
+            <a href="#">Pusat Bantuan</a>
+            <a href="#">Komunitas</a>
+        </div>
+        <div class="column">
+            <h4>Hubungi Kami</h4>
+            <a href="#">Kontak</a>
+            <a href="#">Kebijakan Privasi</a>
+            <a href="#">Syarat & Ketentuan</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Copyright © 2024 Skizofrenia Awareness | All Rights Reserved
+    </div>
+    <div id="cursor-effect"></div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation to sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                } else {
+                    entry.target.classList.remove('show');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        const sections = document.querySelectorAll('section, header');
+        sections.forEach((section) => {
+            section.classList.add('hidden');
+            observer.observe(section);
+        });
+
+         // Cursor effect script
+         document.addEventListener('DOMContentLoaded', () => {
+            const cursorEffect = document.getElementById('cursor-effect');
+            
+            document.addEventListener('mousemove', (e) => {
+                // Create multiple sparks
+                for (let i = 0; i < 3; i++) {
+                    const spark = document.createElement('div');
+                    spark.classList.add('spark');
+                    
+                    // Randomize spark position slightly around the cursor
+                    const offsetX = (Math.random() - 0.5) * 20;
+                    const offsetY = (Math.random() - 0.5) * 20;
+                    
+                    spark.style.left = `${e.clientX + offsetX}px`;
+                    spark.style.top = `${e.clientY + offsetY}px`;
+                    
+                    cursorEffect.appendChild(spark);
+                    
+                    // Remove spark after animation
+                    setTimeout(() => {
+                        spark.remove();
+                    }, 500);
+                }
+            });
+        });
+    
+</script>
+    <style>
+        /* Scroll animation styles */
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</body>
+</html>
